@@ -2,15 +2,22 @@ body{
   background-color: teal;
   color: white;
   font-family: "Dosis";
+  text-align: center;
+}
+
+
+.container{
+  display: flex;
+}
+
+.search-container{
+  padding: 20px;
+  flex: 0 1 auto;
 }
 
 h1{
   text-align: center;
   font-weight: 500;
-}
-
-.search-container{
-  text-align: center;
 }
 
 

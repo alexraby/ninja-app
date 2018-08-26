@@ -5,23 +5,32 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>jQuery Test</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="/Users/alex/Documents/style.css"></link>
+  <link rel="stylesheet" href="/Users/alex/Documents/Projects/ninja-app/style.css"></link>
   <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
 </head>
   <body>
   <h1>Ninja Targeting</h1>
-  <div class="search-container">
-  <p>What movie would you like to multisearch? Type below, then click Submit or press Enter</p>
-  <input type="text" id="boxu" autofocus> <button id="search">Search</button>
-  <h3>Results</h3>
-  <p id="error"></p>
-  <ul id="search_results"></ul>
-
-
-  </div>
+<div class="container">
+    <div class="search-container movie">
+      <p>What movie would you like to multisearch?</p>
+      <input type="text" id="moviesearch" autofocus> <button id="movsearch">Search</button>
+      <h3>Results</h3>
+      <p id="error"></p>
+      <ul id="movie_search_results"></ul>
+    </div>
+    <div class="search-container tv">
+      <p>What show would you like to multisearch?</p>
+      <input type="text" id="tv-search" autofocus> <button id="tvsearch">Search</button>
+      <h3>Results</h3>
+      <p id="error"></p>
+      <ul id="tv_search_results"></ul>
+    </div>
+</div>
 
   </body>
-  <script type="text/javascript" charset="utf-8">
+  <script type="text/javascript" src="/Users/alex/Documents/Projects/ninja-app/movie.js"></script>
+  <script type="text/javascript" src="/Users/alex/Documents/Projects/ninja-app/tv.js"></script>
+  <!-- <script type="text/javascript" charset="utf-8">
     var api_key = '821a76f030c19cf10545a94eb1642c35';
 
 // Click the button and Grab the value from the input
@@ -87,7 +96,7 @@ $('document').ready(function(e){
     // 	 document.getElementById("boxu").value = "";
     // 	}
     // }
-  </script>
+  </script> -->
 
 
 </html>
