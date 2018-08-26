@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>jQuery Test</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="/Users/alex/Documents/style.css"></link>
+  <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,700" rel="stylesheet">
+</head>
+  <body>
+  <h1>Ninja Targeting</h1>
+  <div class="search-container">
+  <p>What movie would you like to multisearch? Type below, then click Submit or press Enter</p>
+  <input type="text" id="boxu" autofocus> <button id="search">Search</button>
+  <h3>Results</h3>
+  <p id="error"></p>
+  <ul id="search_results"></ul>
+
+
+  </div>
+
+  </body>
+  <script type="text/javascript" charset="utf-8">
+    var api_key = '821a76f030c19cf10545a94eb1642c35';
+
+// Click the button and Grab the value from the input
+$('document').ready(function(e){
+    $("button").click(function(e){
+      var q = document.getElementById("boxu").value;
+      var lowerQ = q.toLowerCase();
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        url: 'http://api.themoviedb.org/3/search/movie?api_key=' + api_key + '&query=' + q + '',
+        "method": "GET",
+        "headers": {},
+        "data": "{}",
+        dataType: 'jsonp',
+        jsonpCallback: 'testing'
+      };
+// First Call
+      $.ajax(settings).done(function(response) {
+        var i = 0;
+        var objectArray = response;
+        for ( i; i < 10; i++) {
+          var whoa = objectArray.results[i].id;
+          $('#search_results').append('<li id="'+ [i] +'" class="list">' + response.results[i].title + '</li>');
+      };
+// On Button Click, Get ID
+      $('li').bind('click', function (e) {
+        var chosen = event.target.id;
+        var kevin = objectArray.results[chosen].id;
+        var imdb = {
+            url: 'https://api.themoviedb.org/3/movie/' + kevin + '?api_key=' + api_key + '',
+            "async": true,
+            "crossDomain": true,
+            "method": "GET",
+            "headers": {},
+            "data": "{}"
+          };
+          $.ajax(imdb).done(function(response) {
+              var boom = response.imdb_id;
+              window.open("https://pro.imdb.com/title/" + boom + "/?ref_=search_search_result_1");
+          });
+          });
+
+        });
+      });
+// If User Hits Enter Key
+      $('#boxu').keypress(function(e){
+             if(e.which == 13){//Enter key pressed
+               $('button').click();//Trigger search button click event
+             }
+         });
+
+});
+
+
+
+    // function searchy(e)
+    // {
+    // 	if (e.which == 13)
+    // 	{
+    //   	 var q = encodeURIComponent(document.getElementById("boxu").value);
+    // 	 window.open("https://pro.imdb.com/" + q + "/tt0411008/?ref_=search_search_result_1");
+    // 	 document.getElementById("boxu").value = "";
+    // 	}
+    // }
+  </script>
+
+
+</html>
