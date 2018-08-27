@@ -4,6 +4,14 @@ var api_key2 = '821a76f030c19cf10545a94eb1642c35';
 // Click the button and Grab the value from the input
 $('document').ready(function(e){
   $("#tvsearch").click(function(e){
+//Get Season Number if there is one
+    var x = document.getElementById("season-select");
+    var val = x.value;
+
+//Get Season Number if there is one
+    var y = document.getElementById("ep-select");
+    var epnum = y.value;
+
     var m = document.getElementById("tv-search").value;
     // var lowerQ = q.toLowerCase();
     var settings = {
@@ -39,11 +47,27 @@ $('document').ready(function(e){
           "headers": {},
           "data": "{}"
         };
+
+        if(val!==0){
+        var imdb = {
+            url: 'https://api.themoviedb.org/3/tv/' + kevin + '/season/' + val + '?api_key=' + api_key + '',
+            "async": true,
+            "crossDomain": true,
+            "method": "GET",
+            "headers": {},
+            "data": "{}"
+          };
+
         $.ajax(imdb).done(function(response) {
-          console.log(response);
+          console.log(response.episodes[epnum-1]);
             var boom = response.imdb_id;
             window.open("https://pro.imdb.com/title/" + boom + "/?ref_=search_search_result_1");
+            window.open("https://pro.imdb.com/title/" + boom + "/?ref_=search_search_result_1");
+            https://www.imdb.com/title/tt0745667/?ref_=ttep_ep1
         });
+      }else{
+        console.log("oh boy");
+      }
         });
 
       });

@@ -36,6 +36,7 @@ $('document').ready(function(e){
           "data": "{}"
         };
         $.ajax(imdb).done(function(response) {
+            console.log(response);
             var boom = response.imdb_id;
             window.open("https://pro.imdb.com/title/" + boom + "/?ref_=search_search_result_1");
         });
